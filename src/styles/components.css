@@ -1021,4 +1021,18 @@
     grid-template-columns: 1fr;
     gap: 8px;
   }
+  /* Stack the route as source over target with the swap centered between,
+     matching the picker, instead of letting the two pills wrap unevenly. */
+  .route {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .route-field {
+    justify-content: space-between;
+  }
+  .route-swap {
+    align-self: center;
+  }
 }

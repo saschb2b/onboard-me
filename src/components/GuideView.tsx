@@ -52,9 +52,7 @@ export function GuideView({ guide, onBack, onSwap }: GuideViewProps) {
                 className="route-swap"
                 onClick={onSwap}
                 title="Swap direction"
-                aria-label={`Swap direction to ${target?.label ?? guide.target} to ${
-                  source?.label ?? guide.source
-                }`}
+                aria-label={`Reverse direction, ${targetShort} to ${sourceShort}`}
               >
                 <SwapIcon />
               </button>
