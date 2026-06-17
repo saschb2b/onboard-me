@@ -147,3 +147,16 @@ code,
     transform: translateY(0);
   }
 }
+
+/* Honor a request for less motion: collapse animations and transitions
+   to near-instant, and stop smooth scrolling, app-wide. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
