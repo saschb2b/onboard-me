@@ -6,6 +6,11 @@
   z-index: 1;
   padding-block: clamp(48px, 9vh, 110px) 80px;
 }
+/* main is a programmatic focus target on route change, not a control, so it
+   should never paint a focus ring. */
+.app-main:focus {
+  outline: none;
+}
 
 /* ============================================================
    Landing

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Landing } from './components/Landing';
 import { GuideView } from './components/GuideView';
 import { GuideMissing } from './components/GuideMissing';
@@ -23,6 +23,8 @@ function readHash(): Pair | null {
 
 export default function App() {
   const [pair, setPair] = useState<Pair | null>(readHash);
+  const mainRef = useRef<HTMLElement>(null);
+  const firstRoute = useRef(true);
 
   // Keep the URL hash and app state in sync, so guides are shareable and the
   // browser's back button works as expected.
@@ -32,10 +34,18 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  // Land at the top whenever the route changes, so a guide never opens
-  // mid-scroll and "start over" returns to the top of the landing page.
+  // On every route change, land at the top and move focus into the new view.
+  // Without the focus move, clicking a guide or "start over" strands keyboard
+  // and screen-reader users on a control that just unmounted; they get no
+  // signal the content changed. Skip the first mount so we don't grab focus
+  // on load.
   useEffect(() => {
     window.scrollTo(0, 0);
+    if (firstRoute.current) {
+      firstRoute.current = false;
+      return;
+    }
+    mainRef.current?.focus({ preventScroll: true });
   }, [pair?.source, pair?.target]);
 
   // Reflect the current pair in the tab title, so a shared link or a
@@ -76,7 +86,7 @@ export default function App() {
         </div>
       )}
 
-      <main className="app-main">
+      <main ref={mainRef} tabIndex={-1} className="app-main">
         {!pair && <Landing onSubmit={open} />}
         {pair && guide && (
           <GuideView guide={guide} onBack={reset} onSwap={() => open(guide.target, guide.source)} />
