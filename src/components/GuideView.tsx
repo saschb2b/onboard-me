@@ -76,18 +76,16 @@ export function GuideView({ guide, onBack, onSwap }: GuideViewProps) {
               {guide.mentalShifts.map((shift) => (
                 <div key={shift.title} className="shift glass">
                   <h3 className="shift-title">{shift.title}</h3>
-                  <div className="shift-flow">
-                    <div className="shift-side shift-side--from">
-                      <span className="shift-label">{sourceShort}</span>
-                      <p>{shift.from}</p>
-                    </div>
-                    <span className="shift-connector" aria-hidden>
-                      <ShiftArrow />
-                    </span>
-                    <div className="shift-side shift-side--to">
-                      <span className="shift-label">{targetShort}</span>
-                      <p>{shift.to}</p>
-                    </div>
+                  <div className="shift-side shift-side--from">
+                    <span className="shift-label">{sourceShort}</span>
+                    <p>{shift.from}</p>
+                  </div>
+                  <span className="shift-connector" aria-hidden>
+                    <ShiftArrow />
+                  </span>
+                  <div className="shift-side shift-side--to">
+                    <span className="shift-label">{targetShort}</span>
+                    <p>{shift.to}</p>
                   </div>
                 </div>
               ))}

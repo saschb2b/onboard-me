@@ -557,17 +557,19 @@
   color: var(--c-ink-muted);
 }
 
-/* Mental shifts: a vertical "you know X, over there it's Y" card. Each side
-   gets the full card width so a full sentence reads on two or three lines
-   instead of a skinny ribbon. Labels name the two worlds. */
+/* Mental shifts: a "you know X, over there it's Y" card. On wide screens the
+   cards share a row subgrid, so the title, the source block, the connector,
+   and the target block line up across the whole row instead of drifting to
+   different heights. Single column falls back to a plain flex stack. */
 .shift-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: 1fr;
   gap: 18px;
 }
 .shift {
   display: flex;
   flex-direction: column;
+  gap: 12px;
   padding: 24px;
   border-radius: var(--r-lg);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
@@ -578,25 +580,20 @@
 }
 .shift-title {
   font-size: 1.14rem;
-  margin-bottom: 18px;
   color: var(--c-ink);
 }
-.shift-flow {
+.shift-side {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-}
-.shift-side {
+  gap: 5px;
   padding: 13px 16px;
   border-radius: var(--r-md);
 }
 .shift-side p {
-  margin-top: 5px;
   font-size: 0.95rem;
   line-height: 1.5;
 }
 .shift-label {
-  display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.67rem;
   font-weight: 500;
@@ -630,10 +627,26 @@
   align-self: center;
   width: 28px;
   height: 28px;
-  margin: 7px 0;
   border-radius: var(--r-pill);
   background: rgb(var(--c-warm-3-rgb) / 0.12);
   color: var(--c-warm-3);
+}
+
+@media (min-width: 720px) {
+  .shift-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 18px;
+    row-gap: 14px;
+  }
+  .shift {
+    display: grid;
+    grid-row: span 4;
+    grid-template-rows: subgrid;
+    gap: 0;
+  }
+  .shift-connector {
+    justify-self: center;
+  }
 }
 
 /* Rosetta */
