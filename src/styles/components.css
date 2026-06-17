@@ -1023,6 +1023,9 @@
 .resource + .resource {
   border-top: 1px solid var(--c-border-soft);
 }
+/* One quiet tag style for every kind, matching the app's other tags. The
+   uppercase label carries the distinction; color-coding each kind made the
+   column read as noise. */
 .res-kind {
   font-family: var(--font-mono);
   font-size: 0.68rem;
@@ -1030,36 +1033,17 @@
   letter-spacing: 0.06em;
   padding: 4px 10px;
   border-radius: var(--r-pill);
-  background: rgb(var(--c-cool-violet-rgb) / 0.14);
+  background: rgb(var(--c-cool-violet-rgb) / 0.12);
   color: var(--c-cool-violet);
   min-width: 78px;
   text-align: center;
 }
-.res-kind--docs {
-  background: rgb(var(--c-cool-cyan-rgb) / 0.16);
-  color: var(--c-cool-cyan-ink);
-}
-.res-kind--course {
-  background: linear-gradient(
-    105deg,
-    rgb(var(--c-warm-1-rgb) / 0.2),
-    rgb(var(--c-warm-3-rgb) / 0.18)
-  );
-  color: var(--c-warm-ink);
-}
 .res-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
   font-weight: 600;
   color: var(--c-ink);
 }
 .res-link:hover {
   color: var(--c-warm-ink);
-}
-.res-link:hover .ext-icon {
-  color: var(--c-warm-3);
-  transform: translate(1px, -1px);
 }
 .res-note {
   font-size: 0.86rem;
