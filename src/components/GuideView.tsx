@@ -127,17 +127,37 @@ export function GuideView({ guide, onBack, onSwap }: GuideViewProps) {
 
           <Section id="packages" title="Packages to know" hint="The libraries you will reach for first.">
             <div className="pkg-grid">
-              {guide.packagesToKnow.map((pkg) => (
-                <div key={pkg.name} className="pkg glass">
-                  <h3>{pkg.name}</h3>
-                  <p>{pkg.what}</p>
-                  {pkg.analog && (
-                    <p className="pkg-analog">
-                      <span>like</span> {pkg.analog}
-                    </p>
-                  )}
-                </div>
-              ))}
+              {guide.packagesToKnow.map((pkg) => {
+                const body = (
+                  <>
+                    <h3 className="pkg-name">
+                      {pkg.name}
+                      {pkg.href && <ExternalIcon />}
+                    </h3>
+                    <p>{pkg.what}</p>
+                    {pkg.analog && (
+                      <p className="pkg-analog">
+                        <span>like</span> {pkg.analog}
+                      </p>
+                    )}
+                  </>
+                );
+                return pkg.href ? (
+                  <a
+                    key={pkg.name}
+                    className="pkg pkg--link glass"
+                    href={pkg.href}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {body}
+                  </a>
+                ) : (
+                  <div key={pkg.name} className="pkg glass">
+                    {body}
+                  </div>
+                );
+              })}
             </div>
           </Section>
 
@@ -240,6 +260,20 @@ function SwapIcon() {
         d="M5 4.5h9M11 1.5L14.5 4.5 11 7.5M13 13.5H4M7 16.5L3.5 13.5 7 10.5"
         stroke="currentColor"
         strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ExternalIcon() {
+  return (
+    <svg className="pkg-ext" width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden>
+      <path
+        d="M6 3.5h6.5V10M12.5 3.5L6.5 9.5M11 9v3.5H3.5V5H7"
+        stroke="currentColor"
+        strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />

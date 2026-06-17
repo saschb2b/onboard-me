@@ -50,6 +50,8 @@ export interface KnownPackage {
   what: string;
   /** The closest thing in the source field, if there is one. */
   analog?: string;
+  /** Canonical docs or repo for the package, if available. */
+  href?: string;
 }
 
 export type ResourceKind = 'docs' | 'course' | 'sample' | 'tool' | 'community';

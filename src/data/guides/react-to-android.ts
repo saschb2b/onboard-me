@@ -187,16 +187,16 @@ fun GreetingPreview() {
   ],
 
   packagesToKnow: [
-    { name: 'Jetpack Compose + Material 3', what: 'Declarative UI toolkit and the Material design components.', analog: 'React + MUI' },
-    { name: 'Navigation Compose', what: 'In-app navigation and a typed back stack.', analog: 'React Router' },
-    { name: 'ViewModel + Lifecycle', what: 'State holders that survive configuration changes.', analog: 'a store scoped to a route/screen' },
-    { name: 'kotlinx.coroutines', what: 'Structured async with suspend functions and Flow.', analog: 'Promises/async-await + RxJS' },
-    { name: 'Retrofit + OkHttp', what: 'Typed HTTP client and the networking layer.', analog: 'axios / fetch wrapper' },
-    { name: 'kotlinx.serialization', what: 'Type-safe JSON (de)serialization.', analog: 'zod + JSON.parse' },
-    { name: 'Room', what: 'SQLite ORM with compile-time-checked queries.', analog: 'Prisma / an IndexedDB wrapper' },
-    { name: 'DataStore', what: 'Async key/value and typed preferences.', analog: 'localStorage' },
-    { name: 'Hilt', what: 'Dependency injection wired by the compiler.', analog: 'no clean React equivalent' },
-    { name: 'Coil', what: 'Image loading and caching for Compose.', analog: 'next/image-style loaders' },
+    { name: 'Jetpack Compose + Material 3', what: 'Declarative UI toolkit and the Material design components.', analog: 'React + MUI', href: 'https://developer.android.com/develop/ui/compose' },
+    { name: 'Navigation Compose', what: 'In-app navigation and a typed back stack.', analog: 'React Router', href: 'https://developer.android.com/guide/navigation' },
+    { name: 'ViewModel + Lifecycle', what: 'State holders that survive configuration changes.', analog: 'a store scoped to a route/screen', href: 'https://developer.android.com/topic/libraries/architecture/viewmodel' },
+    { name: 'kotlinx.coroutines', what: 'Structured async with suspend functions and Flow.', analog: 'Promises/async-await + RxJS', href: 'https://github.com/Kotlin/kotlinx.coroutines' },
+    { name: 'Retrofit + OkHttp', what: 'Typed HTTP client and the networking layer.', analog: 'axios / fetch wrapper', href: 'https://square.github.io/retrofit/' },
+    { name: 'kotlinx.serialization', what: 'Type-safe JSON (de)serialization.', analog: 'zod + JSON.parse', href: 'https://github.com/Kotlin/kotlinx.serialization' },
+    { name: 'Room', what: 'SQLite ORM with compile-time-checked queries.', analog: 'Prisma / an IndexedDB wrapper', href: 'https://developer.android.com/training/data-storage/room' },
+    { name: 'DataStore', what: 'Async key/value and typed preferences.', analog: 'localStorage', href: 'https://developer.android.com/topic/libraries/architecture/datastore' },
+    { name: 'Hilt', what: 'Dependency injection wired by the compiler.', analog: 'no clean React equivalent', href: 'https://developer.android.com/training/dependency-injection/hilt-android' },
+    { name: 'Coil', what: 'Image loading and caching for Compose.', analog: 'next/image-style loaders', href: 'https://coil-kt.github.io/coil/' },
   ],
 
   resources: [

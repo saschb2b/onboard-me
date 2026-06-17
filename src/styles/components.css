@@ -930,29 +930,56 @@
   opacity: 1;
 }
 
-/* Packages */
+/* Packages: each card links to the package's canonical docs. */
 .pkg-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: start;
   gap: 14px;
 }
 .pkg {
+  display: flex;
+  flex-direction: column;
   padding: 18px 20px;
   border-radius: var(--r-lg);
 }
-.pkg h3 {
+.pkg--link {
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.pkg--link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.pkg-name {
+  display: flex;
+  align-items: center;
+  gap: 7px;
   font-size: 1rem;
   color: var(--c-ink);
+}
+.pkg-ext {
+  flex-shrink: 0;
+  color: var(--c-ink-muted);
+  transition: color 0.16s ease, transform 0.16s ease;
+}
+.pkg--link:hover .pkg-name {
+  color: var(--c-warm-ink);
+}
+.pkg--link:hover .pkg-ext {
+  color: var(--c-warm-3);
+  transform: translate(1px, -1px);
 }
 .pkg p {
   margin-top: 8px;
   font-size: 0.92rem;
   color: var(--c-ink-soft);
 }
-.pkg-analog {
-  margin-top: 10px !important;
-  font-size: 0.85rem !important;
-  color: var(--c-ink-muted) !important;
+.pkg .pkg-analog {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  color: var(--c-ink-muted);
 }
 .pkg-analog span {
   font-family: var(--font-mono);
