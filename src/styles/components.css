@@ -758,7 +758,8 @@
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--c-ink);
-  padding-top: 5px;
+  padding-top: var(--space-1);
+  overflow-wrap: anywhere;
 }
 /* The mapping always reads as "from" stacked over "→ to", so the arrow sits
    in the same place on every row instead of jumping inline or wrapping. */
@@ -805,13 +806,16 @@
   font-size: 0.85rem;
   color: var(--c-ink-muted);
   line-height: 1.4;
+  /* Notes can contain long dotted tokens (e.g. Modifier.padding(...).fill());
+     let them break so a narrow column does not force the page to scroll. */
+  overflow-wrap: anywhere;
 }
 
 /* Gotchas: cautions, so each leads with a caution mark instead of an
    ornamental colored edge. Cards in a row share one height for an even grid. */
 .gotchas {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: var(--space-4);
 }
 .gotcha {
@@ -857,7 +861,9 @@
 }
 .step {
   display: grid;
-  grid-template-columns: auto 1fr;
+  /* minmax(0, 1fr) lets the body shrink so a wide code sample scrolls inside
+     its own block instead of widening the page. */
+  grid-template-columns: auto minmax(0, 1fr);
   gap: var(--space-4);
   align-items: start;
 }
@@ -876,6 +882,7 @@
 }
 .step-body {
   padding-top: var(--space-1);
+  min-width: 0;
 }
 .step-body h3 {
   font-size: 1.1rem;
@@ -941,7 +948,7 @@
    footer and the shared height looks deliberate rather than padded. */
 .pkg-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
   gap: var(--space-4);
 }
 .pkg {
