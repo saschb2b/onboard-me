@@ -40,10 +40,6 @@ export function Landing({ onSubmit }: LandingProps) {
             <span className="picker-word">I am a</span>
             <FieldSelect value={source} onChange={setSource} placeholder="choose your field" label="Your current field" />
           </div>
-          <div className="picker-line">
-            <span className="picker-word">and I want to know about</span>
-            <FieldSelect value={target} onChange={setTarget} placeholder="choose a new field" label="The field to learn" />
-          </div>
           <button
             type="button"
             className="picker-swap"
@@ -57,6 +53,10 @@ export function Landing({ onSubmit }: LandingProps) {
           >
             <SwapIcon />
           </button>
+          <div className="picker-line">
+            <span className="picker-word">and I want to know about</span>
+            <FieldSelect value={target} onChange={setTarget} placeholder="choose a new field" label="The field to learn" />
+          </div>
         </div>
 
         <button type="submit" className="cta" disabled={!ready}>
@@ -99,7 +99,7 @@ function SwapIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
       <path
-        d="M6 3.5L3 6.5l3 3M3 6.5h9M12 14.5l3-3-3-3M15 11.5H6"
+        d="M5.5 13.5V4.5M3 7l2.5-2.5L8 7M12.5 4.5v9M10 11l2.5 2.5L15 11"
         stroke="currentColor"
         strokeWidth="1.7"
         strokeLinecap="round"
