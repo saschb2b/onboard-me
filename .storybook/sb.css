@@ -1,0 +1,7 @@
+/* Storybook-only: put stories on the app's field gradient so glass surfaces
+   read the way they do in the product. */
+.sb-field {
+  background: var(--g-field);
+  min-height: 100vh;
+  padding: clamp(24px, 5vw, 56px);
+}
