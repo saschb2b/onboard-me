@@ -76,6 +76,7 @@
   --space-5: 20px;
   --space-6: 24px;
   --space-8: 32px;
+  --space-10: 40px;
   /* Standard inner padding for a content card. */
   --pad-card: var(--space-5);
 
