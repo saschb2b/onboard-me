@@ -38,6 +38,18 @@ export default function App() {
     window.scrollTo(0, 0);
   }, [pair?.source, pair?.target]);
 
+  // Reflect the current pair in the tab title, so a shared link or a
+  // bookmark reads as "React → Android · onboard-me" rather than a generic
+  // home title.
+  useEffect(() => {
+    if (!pair) {
+      document.title = 'onboard-me · learn a field through the one you know';
+      return;
+    }
+    const label = (id: FieldId) => (getField(id)?.label ?? id).replace(' Developer', '');
+    document.title = `${label(pair.source)} → ${label(pair.target)} · onboard-me`;
+  }, [pair?.source, pair?.target]);
+
   const open = (source: FieldId, target: FieldId) => {
     window.location.hash = `/${source}/${target}`;
     setPair({ source, target });
