@@ -98,7 +98,12 @@ export function GuideView({ guide, onBack, onSwap }: GuideViewProps) {
             <div className="gotchas">
               {guide.gotchas.map((g) => (
                 <div key={g.title} className="gotcha glass">
-                  <h3>{g.title}</h3>
+                  <div className="gotcha-head">
+                    <span className="gotcha-mark" aria-hidden>
+                      <AlertIcon />
+                    </span>
+                    <h3>{g.title}</h3>
+                  </div>
                   <p>{g.body}</p>
                 </div>
               ))}
@@ -238,6 +243,21 @@ function SwapIcon() {
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+    </svg>
+  );
+}
+
+function AlertIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden>
+      <path
+        d="M9 3.2l6.4 11.1a0.6 0.6 0 0 1-0.52 0.9H3.12a0.6 0.6 0 0 1-0.52-0.9L9 3.2z"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinejoin="round"
+      />
+      <path d="M9 7.4v3.1" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+      <circle cx="9" cy="12.7" r="0.55" fill="currentColor" />
     </svg>
   );
 }

@@ -804,21 +804,39 @@
   line-height: 1.4;
 }
 
-/* Gotchas */
+/* Gotchas: cautions, so each leads with a caution mark instead of an
+   ornamental colored edge. Cards size to content (no stretched empty space). */
 .gotchas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: start;
   gap: 16px;
 }
 .gotcha {
   padding: 22px;
   border-radius: var(--r-lg);
-  border-left: 3px solid var(--c-warm-3);
+}
+.gotcha-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin-bottom: 10px;
+}
+.gotcha-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-sm);
+  background: rgb(var(--c-warm-3-rgb) / 0.12);
+  color: var(--c-warm-3);
 }
 .gotcha h3 {
   font-size: 1.08rem;
-  margin-bottom: 10px;
   color: var(--c-ink);
+  padding-top: 3px;
 }
 .gotcha p {
   color: var(--c-ink-soft);
