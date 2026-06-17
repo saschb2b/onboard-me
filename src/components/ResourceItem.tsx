@@ -10,11 +10,13 @@ export function ResourceItem({ resource }: ResourceItemProps) {
   return (
     <li className="resource">
       <span className={`res-kind res-kind--${resource.kind}`}>{kindLabel(resource.kind)}</span>
-      <a href={resource.href} target="_blank" rel="noreferrer" className="res-link">
-        {resource.label}
-        <ExternalIcon />
-      </a>
-      {resource.note && <span className="res-note">{resource.note}</span>}
+      <span className="res-main">
+        <a href={resource.href} target="_blank" rel="noreferrer" className="res-link">
+          {resource.label}
+          <ExternalIcon />
+        </a>
+        {resource.note && <span className="res-note">{resource.note}</span>}
+      </span>
     </li>
   );
 }

@@ -888,7 +888,9 @@
 }
 .code-pre {
   margin: 0;
-  padding: 18px 20px;
+  /* Extra top room so the copy button sits in a clear strip above the code;
+     otherwise a long first line scrolls underneath it. */
+  padding: 40px 20px 18px;
   border-radius: var(--r-md);
   background: var(--g-deep);
   color: var(--c-ink-on-dark);
@@ -905,8 +907,8 @@
 }
 .code-copy {
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 8px;
+  right: 8px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1000,11 +1002,20 @@
   border-radius: var(--r-lg);
 }
 .resource {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: baseline;
   gap: 14px;
   padding: 14px 16px;
+}
+/* Link plus note share the second column, so a wrapped note lines up under the
+   link instead of jumping back under the kind tag. */
+.res-main {
+  display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  min-width: 0;
 }
 .resource + .resource {
   border-top: 1px solid var(--c-border-soft);
