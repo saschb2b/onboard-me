@@ -1,0 +1,143 @@
+@import './tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--c-ink);
+  background: var(--g-field);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--c-warm-ink);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+code,
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.86em;
+}
+
+/* Shared glass surface */
+.glass {
+  background: rgb(var(--c-surface) / 0.55);
+  border: 1px solid var(--c-border);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow-md);
+}
+
+.app {
+  min-height: 100%;
+  width: 100%;
+}
+
+.container {
+  width: min(100% - 40px, var(--content-w));
+  margin-inline: auto;
+}
+
+/* Decorative floating panels behind the hero, echoing the reference art */
+.field-decor {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.field-decor span {
+  position: absolute;
+  border-radius: var(--r-lg);
+  opacity: 0.55;
+  filter: blur(0.3px);
+}
+.field-decor .d1 {
+  width: 200px;
+  height: 130px;
+  top: 14%;
+  left: 6%;
+  background: rgb(var(--c-surface) / 0.5);
+  border: 1px solid var(--c-border);
+  transform: rotate(-6deg);
+}
+.field-decor .d2 {
+  width: 150px;
+  height: 150px;
+  bottom: 12%;
+  left: 12%;
+  background: var(--g-deep);
+  opacity: 0.35;
+  transform: rotate(8deg);
+}
+.field-decor .d3 {
+  width: 230px;
+  height: 150px;
+  top: 18%;
+  right: 7%;
+  background: var(--g-warm);
+  opacity: 0.28;
+  transform: rotate(7deg);
+}
+.field-decor .d4 {
+  width: 130px;
+  height: 130px;
+  bottom: 16%;
+  right: 14%;
+  background: rgb(var(--c-surface) / 0.5);
+  border: 1px solid var(--c-border);
+  transform: rotate(-9deg);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .rise {
+    animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

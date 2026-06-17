@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "skills": {
+    "agent-browser": {
+      "source": "vercel-labs/agent-browser",
+      "sourceType": "github",
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "computedHash": "228f87d57035100d9dc6efcfc05aafd4b6e3962adacaa04b8217ab2fadb15dc8"
+    },
+    "autopilot": {
+      "source": "saschb2b/skills",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/autopilot/SKILL.md",
+      "computedHash": "9439212adf2497251e9807e5aded17298ef80914f13e10673fd6ffc4b5617ee3"
+    },
+    "javascript-ecosystem": {
+      "source": "saschb2b/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/javascript-ecosystem/SKILL.md",
+      "computedHash": "36ff695bf18af00ed929d5a9750ba03804b6536c68a80f0a875c70672e7a628d"
+    },
+    "no-slop": {
+      "source": "saschb2b/skills",
+      "sourceType": "github",
+      "skillPath": "skills/productivity/no-slop/SKILL.md",
+      "computedHash": "93c4778fbde0d84fe36cd7dd6a42cc7242b8819fb157897b692836084504dea3"
+    },
+    "react-compiler": {
+      "source": "saschb2b/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/react-compiler/SKILL.md",
+      "computedHash": "7a2155221f33b382c9782983477a2391aabea3da4c657bd51cf364bffd2d8438"
+    },
+    "react-stinky": {
+      "source": "saschb2b/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/react-stinky/SKILL.md",
+      "computedHash": "87be08014a639902381c7d795a44e2103b85a0cf9afb3b58e4a026fb06e3648a"
+    }
+  }
+}

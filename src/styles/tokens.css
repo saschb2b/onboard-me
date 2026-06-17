@@ -1,0 +1,73 @@
+/*
+ * Design tokens for onboard-me.
+ * Palette is sampled from the reference dashboard: a soft lavender field,
+ * a warm peach-to-magenta gradient for primary accents, and deep indigo
+ * glass panels. Every color in the app should resolve to one of these.
+ */
+:root {
+  /* Field / background */
+  --c-field-top: #ece3f6;
+  --c-field-mid: #efe4f1;
+  --c-field-bottom: #f6e9ee;
+  --c-field-bloom: #f7d9e4; /* warm glow sampled from the hero card */
+
+  /* Surfaces (glass) */
+  --c-surface: 255 255 255; /* RGB channels for alpha composition */
+  --c-surface-strong: #ffffff;
+  --c-border: rgba(255, 255, 255, 0.65);
+  --c-border-soft: rgba(120, 90, 160, 0.12);
+
+  /* Ink */
+  --c-ink: #2e2a45;
+  --c-ink-soft: #54506e;
+  --c-ink-muted: #8a85a3;
+  --c-ink-on-dark: #f3eefb;
+  --c-ink-on-warm: #ffffff;
+
+  /* Warm accent (primary): peach -> pink -> magenta */
+  --c-warm-1: #ffb089;
+  --c-warm-2: #ff8fb0;
+  --c-warm-3: #ec6fa9;
+  --c-warm-ink: #d8548f;
+
+  /* Deep accent: indigo glass panels */
+  --c-deep-1: #322e63;
+  --c-deep-2: #3f3a7e;
+  --c-deep-edge: rgba(60, 54, 120, 0.35);
+
+  /* Cool accents (chips, charts) */
+  --c-cool-cyan: #5ec6e6;
+  --c-cool-violet: #9b7fe0;
+  --c-cool-pink: #ff77ae;
+
+  /* Semantic gradients */
+  --g-field: radial-gradient(
+      120% 120% at 18% 8%,
+      var(--c-field-top) 0%,
+      var(--c-field-mid) 42%,
+      var(--c-field-bottom) 100%
+    ),
+    radial-gradient(80% 80% at 82% 92%, var(--c-field-bloom) 0%, transparent 60%);
+  --g-warm: linear-gradient(105deg, var(--c-warm-1) 0%, var(--c-warm-2) 52%, var(--c-warm-3) 100%);
+  --g-deep: linear-gradient(150deg, var(--c-deep-2) 0%, var(--c-deep-1) 100%);
+
+  /* Elevation */
+  --shadow-sm: 0 2px 8px rgba(74, 56, 110, 0.08);
+  --shadow-md: 0 14px 40px rgba(74, 56, 110, 0.14);
+  --shadow-lg: 0 30px 70px rgba(74, 56, 110, 0.20);
+  --shadow-warm: 0 16px 38px rgba(236, 111, 169, 0.34);
+
+  /* Radii */
+  --r-sm: 12px;
+  --r-md: 18px;
+  --r-lg: 26px;
+  --r-xl: 34px;
+  --r-pill: 999px;
+
+  /* Type */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Layout */
+  --content-w: 1080px;
+}
