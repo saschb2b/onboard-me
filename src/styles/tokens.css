@@ -19,6 +19,7 @@
 
   /* Ink */
   --c-ink: #2e2a45;
+  --c-ink-mid: #4a3f6e; /* heading-gradient end, between ink and ink-soft */
   --c-ink-soft: #54506e;
   --c-ink-muted: #8a85a3;
   --c-ink-on-dark: #f3eefb;
@@ -46,6 +47,7 @@
   --c-cool-cyan-ink: #2f93b4;
   --c-cool-violet: #9b7fe0;
   --c-cool-violet-rgb: 155 127 224;
+  --c-cool-violet-ink: #5a4d86; /* darker violet for text on a violet tint */
   --c-cool-pink: #ff77ae;
 
   /* Semantic gradients */
