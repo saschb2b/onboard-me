@@ -739,8 +739,8 @@
 }
 .rosetta-row {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1.3fr) minmax(0, 1.1fr);
-  align-items: center;
+  grid-template-columns: 170px minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
   gap: 16px;
   padding: 13px 16px;
   border-radius: var(--r-md);
@@ -755,19 +755,22 @@
   font-weight: 600;
   font-size: 0.95rem;
   color: var(--c-ink);
+  padding-top: 5px;
 }
+/* The mapping always reads as "from" stacked over "→ to", so the arrow sits
+   in the same place on every row instead of jumping inline or wrapping. */
 .r-pair {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  min-width: 0;
 }
-/* Keep the arrow glued to the target term, so a narrow column wraps to
-   "→ target" on its own line instead of orphaning the arrow after "from". */
 .r-to-group {
   display: inline-flex;
   align-items: center;
   gap: 9px;
+  max-width: 100%;
 }
 .r-from,
 .r-to {
@@ -776,6 +779,7 @@
   padding: 5px 10px;
   border-radius: var(--r-sm);
   line-height: 1.4;
+  overflow-wrap: anywhere;
 }
 .r-from {
   background: rgb(var(--c-cool-violet-rgb) / 0.12);
