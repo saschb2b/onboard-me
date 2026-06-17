@@ -153,8 +153,10 @@ export function GuideView({ guide, onBack, onSwap }: GuideViewProps) {
                           <span className="r-concept">{row.concept}</span>
                           <span className="r-pair">
                             <code className="r-from">{row.from}</code>
-                            <span className="r-arrow" aria-hidden>→</span>
-                            <code className="r-to">{row.to}</code>
+                            <span className="r-to-group">
+                              <span className="r-arrow" aria-hidden>→</span>
+                              <code className="r-to">{row.to}</code>
+                            </span>
                           </span>
                           {row.note && <span className="r-note">{row.note}</span>}
                         </li>

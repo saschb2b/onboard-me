@@ -744,6 +744,13 @@
   gap: 9px;
   flex-wrap: wrap;
 }
+/* Keep the arrow glued to the target term, so a narrow column wraps to
+   "→ target" on its own line instead of orphaning the arrow after "from". */
+.r-to-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
 .r-from,
 .r-to {
   font-family: var(--font-mono);
