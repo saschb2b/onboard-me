@@ -42,6 +42,12 @@
       "sourceType": "github",
       "skillPath": "skills/engineering/theme-colors/SKILL.md",
       "computedHash": "24f84869707ef44009cd41e648f4840edb5bc4df1333a60e30b5cf4bfcbc8e8e"
+    },
+    "visual-consistency": {
+      "source": "saschb2b/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/visual-consistency/SKILL.md",
+      "computedHash": "0ad299076b291f0051ffb22213b62696eb58a62e3fec105c02384b5faf371658"
     }
   }
 }
