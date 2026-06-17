@@ -52,12 +52,17 @@ export default function App() {
 
   return (
     <div className="app">
-      <div className="field-decor" aria-hidden>
-        <span className="d1" />
-        <span className="d2" />
-        <span className="d3" />
-        <span className="d4" />
-      </div>
+      {/* Hero-framing panels. They belong on the short landing and missing
+          screens; on the long, scrolling guide they would float over the
+          content and the table of contents, so we drop them there. */}
+      {!guide && (
+        <div className="field-decor" aria-hidden>
+          <span className="d1" />
+          <span className="d2" />
+          <span className="d3" />
+          <span className="d4" />
+        </div>
+      )}
 
       <main className="app-main">
         {!pair && <Landing onSubmit={open} />}
