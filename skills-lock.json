@@ -11,31 +11,43 @@
       "source": "saschb2b/skills",
       "sourceType": "github",
       "skillPath": "skills/productivity/autopilot/SKILL.md",
-      "computedHash": "9439212adf2497251e9807e5aded17298ef80914f13e10673fd6ffc4b5617ee3"
+      "computedHash": "773b9ef18522c4241fed813e6f4ddf8157aad2fdcecd1fe91dd885e62c93c734"
     },
     "javascript-ecosystem": {
       "source": "saschb2b/skills",
       "sourceType": "github",
       "skillPath": "skills/engineering/javascript-ecosystem/SKILL.md",
-      "computedHash": "36ff695bf18af00ed929d5a9750ba03804b6536c68a80f0a875c70672e7a628d"
+      "computedHash": "16dced59c2c379da8359b72c8c7dbf29e1e61884ed5093ff39c0511c010d2e94"
     },
     "no-slop": {
       "source": "saschb2b/skills",
       "sourceType": "github",
       "skillPath": "skills/productivity/no-slop/SKILL.md",
-      "computedHash": "93c4778fbde0d84fe36cd7dd6a42cc7242b8819fb157897b692836084504dea3"
+      "computedHash": "d85bda75ad90bd5fb3b4592b99ffe73575f15dc2b4e511ac9ed1cb06f40252d2"
     },
     "react-compiler": {
       "source": "saschb2b/skills",
       "sourceType": "github",
       "skillPath": "skills/engineering/react-compiler/SKILL.md",
-      "computedHash": "7a2155221f33b382c9782983477a2391aabea3da4c657bd51cf364bffd2d8438"
+      "computedHash": "9cbc719d12c9bc2f30d1a017cc92d81d7c0347a1e5fac1981bc5d1b4f4ab470b"
     },
     "react-stinky": {
       "source": "saschb2b/skills",
       "sourceType": "github",
       "skillPath": "skills/engineering/react-stinky/SKILL.md",
-      "computedHash": "87be08014a639902381c7d795a44e2103b85a0cf9afb3b58e4a026fb06e3648a"
+      "computedHash": "15f7706fd453fbd0a979927afb6b87bd428876ee18d85bf0d0db4f8974eb477b"
+    },
+    "theme-colors": {
+      "source": "saschb2b/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/theme-colors/SKILL.md",
+      "computedHash": "24f84869707ef44009cd41e648f4840edb5bc4df1333a60e30b5cf4bfcbc8e8e"
+    },
+    "visual-consistency": {
+      "source": "saschb2b/skills",
+      "sourceType": "github",
+      "skillPath": "skills/engineering/visual-consistency/SKILL.md",
+      "computedHash": "0ad299076b291f0051ffb22213b62696eb58a62e3fec105c02384b5faf371658"
     }
   }
 }

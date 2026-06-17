@@ -1,12 +1,16 @@
 node_modules
 dist
 dist-ssr
+storybook-static
 *.local
 *.tsbuildinfo
 
 # Installed skills are fetched from skills-lock.json (source + hash), not vendored.
 .claude/skills/
 .agents/skills/
+
+# Local screenshot scratch (visual verification)
+.shots/
 
 # Editor / OS
 .DS_Store

@@ -40,6 +40,7 @@ The flagship guide, **React → Android**, is written end to end and ships in th
 - **[Base UI](https://base-ui.com)** for the interactive primitives (the field `Select`). Base UI ships behavior and accessibility unstyled, which is exactly right here: the glass-and-gradient look is ours, the keyboard handling and focus management are theirs.
 - **Vite 8** for the dev loop and build.
 - **Hash-based deep links**: every guide has a shareable URL (`/#/react/android`), and the browser back button works.
+- **Built to be read**: a long guide stays navigable with a sticky "on this page" rail and scroll-spy, a reading-progress bar, live filtering of the Rosetta table, copy buttons on code samples, and a one-click swap to the reverse pair.
 
 ### The content model
 
@@ -129,7 +130,6 @@ Open directions, roughly in priority order:
 
 - **Generation backend** for arbitrary pairs, with the schema as the contract and generated results cached so a pair is only built once.
 - **Trust signals** on generated content: provenance, a "was this accurate?" vote, and a path to promote good ones to curated.
-- **Swap direction** in place (turn the arrow into a button). *Android → React* is a different guide, not a reversed one.
 - **Depth levels**: a 5-minute orientation vs. a deep dive from the same data.
 - **Inline term expansion**: hover any target-field term for a one-line gloss.
 - **Usage-driven curation**: track which pairs people actually pick and curate those first.

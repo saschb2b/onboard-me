@@ -19,6 +19,7 @@
 
   /* Ink */
   --c-ink: #2e2a45;
+  --c-ink-mid: #4a3f6e; /* heading-gradient end, between ink and ink-soft */
   --c-ink-soft: #54506e;
   --c-ink-muted: #8a85a3;
   --c-ink-on-dark: #f3eefb;
@@ -29,15 +30,24 @@
   --c-warm-2: #ff8fb0;
   --c-warm-3: #ec6fa9;
   --c-warm-ink: #d8548f;
+  /* RGB channels for the warm accents, for `rgb(... / alpha)` compositing. */
+  --c-warm-1-rgb: 255 176 137;
+  --c-warm-2-rgb: 255 143 176;
+  --c-warm-3-rgb: 236 111 169;
 
   /* Deep accent: indigo glass panels */
   --c-deep-1: #322e63;
   --c-deep-2: #3f3a7e;
-  --c-deep-edge: rgba(60, 54, 120, 0.35);
+  --c-deep-rgb: 60 54 120;
+  --c-deep-edge: rgb(var(--c-deep-rgb) / 0.35);
 
   /* Cool accents (chips, charts) */
   --c-cool-cyan: #5ec6e6;
+  --c-cool-cyan-rgb: 94 198 230;
+  --c-cool-cyan-ink: #2f93b4;
   --c-cool-violet: #9b7fe0;
+  --c-cool-violet-rgb: 155 127 224;
+  --c-cool-violet-ink: #5a4d86; /* darker violet for text on a violet tint */
   --c-cool-pink: #ff77ae;
 
   /* Semantic gradients */
@@ -57,6 +67,19 @@
   --shadow-lg: 0 30px 70px rgba(74, 56, 110, 0.20);
   --shadow-warm: 0 16px 38px rgba(236, 111, 169, 0.34);
 
+  /* Spacing scale (4px base). Use these for padding, gap, and margin so the
+     whole app shares one rhythm instead of ad-hoc pixel values. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  /* Standard inner padding for a content card. */
+  --pad-card: var(--space-5);
+
   /* Radii */
   --r-sm: 12px;
   --r-md: 18px;
@@ -67,6 +90,17 @@
   /* Type */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Type scale. One step per role so sizes stop drifting; the two display
+     headings stay on clamp() for fluid sizing. */
+  --text-2xs: 0.68rem; /* uppercase mono tags and labels */
+  --text-xs: 0.8rem; /* code, small meta */
+  --text-sm: 0.875rem; /* notes, secondary text */
+  --text-base: 0.95rem; /* body */
+  --text-md: 1.05rem; /* lead text, controls */
+  --text-lg: 1.1rem; /* card, group, and section-lead titles */
+  --text-xl: 1.6rem; /* section headings */
+  --text-2xl: 1.7rem; /* page-level titles */
 
   /* Layout */
   --content-w: 1080px;

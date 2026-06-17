@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Landing } from './components/Landing';
 import { GuideView } from './components/GuideView';
 import { GuideMissing } from './components/GuideMissing';
@@ -23,6 +23,8 @@ function readHash(): Pair | null {
 
 export default function App() {
   const [pair, setPair] = useState<Pair | null>(readHash);
+  const mainRef = useRef<HTMLElement>(null);
+  const firstRoute = useRef(true);
 
   // Keep the URL hash and app state in sync, so guides are shareable and the
   // browser's back button works as expected.
@@ -31,6 +33,32 @@ export default function App() {
     window.addEventListener('hashchange', onHashChange);
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
+
+  // On every route change, land at the top and move focus into the new view.
+  // Without the focus move, clicking a guide or "start over" strands keyboard
+  // and screen-reader users on a control that just unmounted; they get no
+  // signal the content changed. Skip the first mount so we don't grab focus
+  // on load.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (firstRoute.current) {
+      firstRoute.current = false;
+      return;
+    }
+    mainRef.current?.focus({ preventScroll: true });
+  }, [pair?.source, pair?.target]);
+
+  // Reflect the current pair in the tab title, so a shared link or a
+  // bookmark reads as "React → Android · onboard-me" rather than a generic
+  // home title.
+  useEffect(() => {
+    if (!pair) {
+      document.title = 'onboard-me · learn a field through the one you know';
+      return;
+    }
+    const label = (id: FieldId) => (getField(id)?.label ?? id).replace(' Developer', '');
+    document.title = `${label(pair.source)} → ${label(pair.target)} · onboard-me`;
+  }, [pair?.source, pair?.target]);
 
   const open = (source: FieldId, target: FieldId) => {
     window.location.hash = `/${source}/${target}`;
@@ -46,16 +74,23 @@ export default function App() {
 
   return (
     <div className="app">
-      <div className="field-decor" aria-hidden>
-        <span className="d1" />
-        <span className="d2" />
-        <span className="d3" />
-        <span className="d4" />
-      </div>
+      {/* Hero-framing panels. They belong on the short landing and missing
+          screens; on the long, scrolling guide they would float over the
+          content and the table of contents, so we drop them there. */}
+      {!guide && (
+        <div className="field-decor" aria-hidden>
+          <span className="d1" />
+          <span className="d2" />
+          <span className="d3" />
+          <span className="d4" />
+        </div>
+      )}
 
-      <main className="app-main">
+      <main ref={mainRef} tabIndex={-1} className="app-main">
         {!pair && <Landing onSubmit={open} />}
-        {pair && guide && <GuideView guide={guide} onBack={reset} />}
+        {pair && guide && (
+          <GuideView guide={guide} onBack={reset} onSwap={() => open(guide.target, guide.source)} />
+        )}
         {pair && !guide && (
           <GuideMissing source={pair.source} target={pair.target} onBack={reset} onPick={open} />
         )}

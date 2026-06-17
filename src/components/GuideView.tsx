@@ -1,154 +1,133 @@
 import type { ReactNode } from 'react';
 import { getField } from '../data/fields';
-import type { Guide, ResourceKind } from '../data/types';
+import { GuideNav, ReadingProgress } from './GuideNav';
+import type { GuideSection } from './GuideNav';
+import { RosettaTable } from './RosettaTable';
+import { ShiftCard } from './ShiftCard';
+import { GotchaCard } from './GotchaCard';
+import { FirstRunStep } from './FirstRunStep';
+import { PackageCard } from './PackageCard';
+import { ResourceItem } from './ResourceItem';
+import { RouteHeader } from './RouteHeader';
+import { GoodNews } from './GoodNews';
+import type { Guide } from '../data/types';
 
 interface GuideViewProps {
   guide: Guide;
   onBack: () => void;
+  /** Jump to the reverse pair (target → source). */
+  onSwap: () => void;
 }
 
-export function GuideView({ guide, onBack }: GuideViewProps) {
+export function GuideView({ guide, onBack, onSwap }: GuideViewProps) {
   const source = getField(guide.source);
   const target = getField(guide.target);
+  const sourceShort = (source?.label ?? guide.source).replace(' Developer', '');
+  const targetShort = (target?.label ?? guide.target).replace(' Developer', '');
+
+  const sections: GuideSection[] = (
+    [
+      guide.mentalShifts.length > 0 && { id: 'shifts', label: 'Mental shifts' },
+      guide.rosetta.length > 0 && { id: 'rosetta', label: 'Rosetta table' },
+      guide.gotchas.length > 0 && { id: 'gotchas', label: 'Surprises' },
+      guide.firstRun.length > 0 && { id: 'first-run', label: 'First run' },
+      guide.packagesToKnow.length > 0 && { id: 'packages', label: 'Packages' },
+      guide.resources.length > 0 && { id: 'resources', label: 'Resources' },
+    ] as (GuideSection | false)[]
+  ).filter(Boolean) as GuideSection[];
 
   return (
-    <article className="guide container rise">
-      <header className="guide-head">
-        <button type="button" className="back" onClick={onBack}>
-          <span aria-hidden>←</span> start over
-        </button>
+    <>
+      <ReadingProgress />
+      <div className="guide-shell">
+        {sections.length > 0 && <GuideNav sections={sections} />}
 
-        <div className="route">
-          <span className="route-field">
-            {source?.label ?? guide.source}
-            <span className="route-tag">{source?.tag}</span>
-          </span>
-          <span className="route-arrow" aria-hidden>→</span>
-          <span className="route-field route-field--target">
-            {target?.label ?? guide.target}
-            <span className="route-tag">{target?.tag}</span>
-          </span>
-        </div>
+        <article className="guide rise">
+          <header className="guide-head">
+            <button type="button" className="back" onClick={onBack}>
+              <span aria-hidden>←</span> start over
+            </button>
 
-        <h1 className="guide-title">{guide.headline}</h1>
-        <p className="guide-intro">{guide.intro}</p>
+            <RouteHeader
+              sourceLabel={source?.label ?? guide.source}
+              sourceTag={source?.tag}
+              targetLabel={target?.label ?? guide.target}
+              targetTag={target?.tag}
+              onSwap={onSwap}
+            />
 
-        <div className="goodnews">
-          <span className="goodnews-tag">What transfers cleanly</span>
-          <p>{guide.goodNews}</p>
-        </div>
-      </header>
+            <h1 className="guide-title">{guide.headline}</h1>
+            <p className="guide-intro">{guide.intro}</p>
 
-      <Section title="The mental shifts" hint="Reframings, not tool swaps.">
-        <div className="shift-grid">
-          {guide.mentalShifts.map((shift) => (
-            <div key={shift.title} className="shift glass">
-              <h3>{shift.title}</h3>
-              <FromTo from={shift.from} to={shift.to} />
+            <GoodNews>{guide.goodNews}</GoodNews>
+          </header>
+
+          <Section id="shifts" title="The mental shifts" hint="Reframings, not tool swaps.">
+            <div className="shift-grid">
+              {guide.mentalShifts.map((shift) => (
+                <ShiftCard key={shift.title} shift={shift} fromLabel={sourceShort} toLabel={targetShort} />
+              ))}
             </div>
-          ))}
-        </div>
-      </Section>
+          </Section>
 
-      <Section title="The Rosetta table" hint="What you do today, and what it becomes over there.">
-        <div className="rosetta">
-          {guide.rosetta.map((group) => (
-            <div key={group.title} className="rosetta-group glass">
-              <h3 className="rosetta-group-title">{group.title}</h3>
-              <ul className="rosetta-rows">
-                {group.rows.map((row) => (
-                  <li key={row.concept} className="rosetta-row">
-                    <span className="r-concept">{row.concept}</span>
-                    <span className="r-pair">
-                      <code className="r-from">{row.from}</code>
-                      <span className="r-arrow" aria-hidden>→</span>
-                      <code className="r-to">{row.to}</code>
-                    </span>
-                    {row.note && <span className="r-note">{row.note}</span>}
-                  </li>
-                ))}
-              </ul>
+          <RosettaTable groups={guide.rosetta} />
+
+          <Section id="gotchas" title="What will surprise you" hint="The culture shocks worth bracing for.">
+            <div className="gotchas">
+              {guide.gotchas.map((gotcha) => (
+                <GotchaCard key={gotcha.title} gotcha={gotcha} />
+              ))}
             </div>
-          ))}
-        </div>
-      </Section>
+          </Section>
 
-      <Section title="What will surprise you" hint="The culture shocks worth bracing for.">
-        <div className="gotchas">
-          {guide.gotchas.map((g) => (
-            <div key={g.title} className="gotcha glass">
-              <h3>{g.title}</h3>
-              <p>{g.body}</p>
+          <Section id="first-run" title="Your first run" hint="From install to a running app.">
+            <ol className="steps">
+              {guide.firstRun.map((step, i) => (
+                <FirstRunStep key={step.title} step={step} number={i + 1} />
+              ))}
+            </ol>
+          </Section>
+
+          <Section id="packages" title="Packages to know" hint="The libraries you will reach for first.">
+            <div className="pkg-grid">
+              {guide.packagesToKnow.map((pkg) => (
+                <PackageCard key={pkg.name} pkg={pkg} />
+              ))}
             </div>
-          ))}
-        </div>
-      </Section>
+          </Section>
 
-      <Section title="Your first run" hint="From install to a running app.">
-        <ol className="steps">
-          {guide.firstRun.map((step, i) => (
-            <li key={step.title} className="step">
-              <span className="step-num">{i + 1}</span>
-              <div className="step-body">
-                <h3>{step.title}</h3>
-                <p>{step.body}</p>
-                {step.code && <pre className="code-block"><code>{step.code}</code></pre>}
-              </div>
-            </li>
-          ))}
-        </ol>
-      </Section>
+          <Section id="resources" title="Where to go next" hint="Bookmark these.">
+            <ul className="resources glass">
+              {guide.resources.map((res) => (
+                <ResourceItem key={res.href} resource={res} />
+              ))}
+            </ul>
+          </Section>
 
-      <Section title="Packages to know" hint="The libraries you will reach for first.">
-        <div className="pkg-grid">
-          {guide.packagesToKnow.map((pkg) => (
-            <div key={pkg.name} className="pkg glass">
-              <h3>{pkg.name}</h3>
-              <p>{pkg.what}</p>
-              {pkg.analog && (
-                <p className="pkg-analog">
-                  <span>like</span> {pkg.analog}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section title="Where to go next" hint="Bookmark these.">
-        <ul className="resources glass">
-          {guide.resources.map((res) => (
-            <li key={res.href} className="resource">
-              <span className={`res-kind res-kind--${res.kind}`}>{kindLabel(res.kind)}</span>
-              <a href={res.href} target="_blank" rel="noreferrer">
-                {res.label}
-              </a>
-              {res.note && <span className="res-note">{res.note}</span>}
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <footer className="guide-foot">
-        <button type="button" className="cta cta--ghost" onClick={onBack}>
-          Translate another field
-        </button>
-      </footer>
-    </article>
+          <footer className="guide-foot">
+            <button type="button" className="cta cta--ghost" onClick={onBack}>
+              Translate another field
+            </button>
+          </footer>
+        </article>
+      </div>
+    </>
   );
 }
 
 function Section({
+  id,
   title,
   hint,
   children,
 }: {
+  id?: string;
   title: string;
   hint?: string;
   children: ReactNode;
 }) {
   return (
-    <section className="g-section">
+    <section id={id} className="g-section">
       <div className="g-section-head">
         <h2>{title}</h2>
         {hint && <span className="g-section-hint">{hint}</span>}
@@ -156,25 +135,4 @@ function Section({
       {children}
     </section>
   );
-}
-
-function FromTo({ from, to }: { from: string; to: string }) {
-  return (
-    <div className="fromto">
-      <p className="fromto-from">{from}</p>
-      <span className="fromto-arrow" aria-hidden>→</span>
-      <p className="fromto-to">{to}</p>
-    </div>
-  );
-}
-
-function kindLabel(kind: ResourceKind): string {
-  const map: Record<ResourceKind, string> = {
-    docs: 'docs',
-    course: 'course',
-    sample: 'sample',
-    tool: 'tool',
-    community: 'community',
-  };
-  return map[kind];
 }
