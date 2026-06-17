@@ -29,15 +29,23 @@
   --c-warm-2: #ff8fb0;
   --c-warm-3: #ec6fa9;
   --c-warm-ink: #d8548f;
+  /* RGB channels for the warm accents, for `rgb(... / alpha)` compositing. */
+  --c-warm-1-rgb: 255 176 137;
+  --c-warm-2-rgb: 255 143 176;
+  --c-warm-3-rgb: 236 111 169;
 
   /* Deep accent: indigo glass panels */
   --c-deep-1: #322e63;
   --c-deep-2: #3f3a7e;
-  --c-deep-edge: rgba(60, 54, 120, 0.35);
+  --c-deep-rgb: 60 54 120;
+  --c-deep-edge: rgb(var(--c-deep-rgb) / 0.35);
 
   /* Cool accents (chips, charts) */
   --c-cool-cyan: #5ec6e6;
+  --c-cool-cyan-rgb: 94 198 230;
+  --c-cool-cyan-ink: #2f93b4;
   --c-cool-violet: #9b7fe0;
+  --c-cool-violet-rgb: 155 127 224;
   --c-cool-pink: #ff77ae;
 
   /* Semantic gradients */

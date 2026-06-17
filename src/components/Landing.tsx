@@ -35,13 +35,28 @@ export function Landing({ onSubmit }: LandingProps) {
           if (ready) onSubmit(source, target);
         }}
       >
-        <div className="picker-line">
-          <span className="picker-word">I am a</span>
-          <FieldSelect value={source} onChange={setSource} placeholder="choose your field" label="Your current field" />
-        </div>
-        <div className="picker-line">
-          <span className="picker-word">and I want to know about</span>
-          <FieldSelect value={target} onChange={setTarget} placeholder="choose a new field" label="The field to learn" />
+        <div className="picker-fields">
+          <div className="picker-line">
+            <span className="picker-word">I am a</span>
+            <FieldSelect value={source} onChange={setSource} placeholder="choose your field" label="Your current field" />
+          </div>
+          <div className="picker-line">
+            <span className="picker-word">and I want to know about</span>
+            <FieldSelect value={target} onChange={setTarget} placeholder="choose a new field" label="The field to learn" />
+          </div>
+          <button
+            type="button"
+            className="picker-swap"
+            onClick={() => {
+              setSource(target);
+              setTarget(source);
+            }}
+            disabled={source === null && target === null}
+            title="Swap the two fields"
+            aria-label="Swap the two fields"
+          >
+            <SwapIcon />
+          </button>
         </div>
 
         <button type="submit" className="cta" disabled={!ready}>
@@ -76,6 +91,20 @@ function Arrow() {
   return (
     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
       <path d="M3 9h11M10 4.5L14.5 9 10 13.5" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function SwapIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
+      <path
+        d="M6 3.5L3 6.5l3 3M3 6.5h9M12 14.5l3-3-3-3M15 11.5H6"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

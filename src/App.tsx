@@ -32,6 +32,12 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
+  // Land at the top whenever the route changes, so a guide never opens
+  // mid-scroll and "start over" returns to the top of the landing page.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pair?.source, pair?.target]);
+
   const open = (source: FieldId, target: FieldId) => {
     window.location.hash = `/${source}/${target}`;
     setPair({ source, target });
@@ -55,7 +61,9 @@ export default function App() {
 
       <main className="app-main">
         {!pair && <Landing onSubmit={open} />}
-        {pair && guide && <GuideView guide={guide} onBack={reset} />}
+        {pair && guide && (
+          <GuideView guide={guide} onBack={reset} onSwap={() => open(guide.target, guide.source)} />
+        )}
         {pair && !guide && (
           <GuideMissing source={pair.source} target={pair.target} onBack={reset} onPick={open} />
         )}

@@ -8,6 +8,9 @@ dist-ssr
 .claude/skills/
 .agents/skills/
 
+# Local screenshot scratch (visual verification)
+.shots/
+
 # Editor / OS
 .DS_Store
 .vscode/*

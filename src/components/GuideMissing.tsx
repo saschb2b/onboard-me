@@ -1,5 +1,5 @@
 import { getField } from '../data/fields';
-import { CURATED_PAIRS } from '../data/guides';
+import { CURATED_PAIRS, getGuide } from '../data/guides';
 import type { FieldId } from '../data/types';
 
 interface GuideMissingProps {
@@ -17,6 +17,7 @@ interface GuideMissingProps {
 export function GuideMissing({ source, target, onBack, onPick }: GuideMissingProps) {
   const s = getField(source);
   const t = getField(target);
+  const reverse = getGuide(target, source);
 
   return (
     <section className="missing container rise">
@@ -33,6 +34,18 @@ export function GuideMissing({ source, target, onBack, onPick }: GuideMissingPro
           generated translation would stream in, built from the same template every curated guide
           uses. Until that backend is wired up, here is what already exists:
         </p>
+
+        {reverse && (
+          <button
+            type="button"
+            className="cta missing-reverse"
+            onClick={() => onPick(target, source)}
+          >
+            Read {t?.label.replace(' Developer', '') ?? target}{' '}
+            <span className="chip-arrow" aria-hidden>→</span> {s?.label.replace(' Developer', '') ?? source}{' '}
+            instead
+          </button>
+        )}
 
         <div className="suggestions">
           {CURATED_PAIRS.map((pair) => {

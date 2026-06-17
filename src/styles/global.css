@@ -50,6 +50,12 @@ button {
   cursor: pointer;
 }
 
+/* Keyboard-only focus ring. Outline follows each element's own radius. */
+:where(a, button, input, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--c-warm-3);
+  outline-offset: 2px;
+}
+
 code,
 .mono {
   font-family: var(--font-mono);
