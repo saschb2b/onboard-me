@@ -805,14 +805,15 @@
 }
 
 /* Gotchas: cautions, so each leads with a caution mark instead of an
-   ornamental colored edge. Cards size to content (no stretched empty space). */
+   ornamental colored edge. Cards in a row share one height for an even grid. */
 .gotchas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  align-items: start;
   gap: 16px;
 }
 .gotcha {
+  display: flex;
+  flex-direction: column;
   padding: 22px;
   border-radius: var(--r-lg);
 }
@@ -930,11 +931,12 @@
   opacity: 1;
 }
 
-/* Packages: each card links to the package's canonical docs. */
+/* Packages: each card links to the package's canonical docs. Cards in a row
+   share one height; the analog is pinned to the bottom so it reads as a
+   footer and the shared height looks deliberate rather than padded. */
 .pkg-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  align-items: start;
   gap: 14px;
 }
 .pkg {
@@ -977,7 +979,8 @@
   color: var(--c-ink-soft);
 }
 .pkg .pkg-analog {
-  margin-top: 10px;
+  margin-top: auto;
+  padding-top: 12px;
   font-size: 0.85rem;
   color: var(--c-ink-muted);
 }
