@@ -959,7 +959,7 @@
   font-size: 1rem;
   color: var(--c-ink);
 }
-.pkg-ext {
+.ext-icon {
   flex-shrink: 0;
   color: var(--c-ink-muted);
   transition: color 0.16s ease, transform 0.16s ease;
@@ -967,7 +967,7 @@
 .pkg--link:hover .pkg-name {
   color: var(--c-warm-ink);
 }
-.pkg--link:hover .pkg-ext {
+.pkg--link:hover .ext-icon {
   color: var(--c-warm-3);
   transform: translate(1px, -1px);
 }
@@ -1030,12 +1030,19 @@
   );
   color: var(--c-warm-ink);
 }
-.resource a {
+.res-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-weight: 600;
   color: var(--c-ink);
 }
-.resource a:hover {
+.res-link:hover {
   color: var(--c-warm-ink);
+}
+.res-link:hover .ext-icon {
+  color: var(--c-warm-3);
+  transform: translate(1px, -1px);
 }
 .res-note {
   font-size: 0.86rem;
