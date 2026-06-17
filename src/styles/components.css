@@ -510,8 +510,8 @@
 }
 
 .goodnews {
-  margin-top: 26px;
-  padding: 20px 22px;
+  margin-top: var(--space-6);
+  padding: var(--pad-card);
   border-radius: var(--r-lg);
   background: linear-gradient(
     105deg,
@@ -564,13 +564,13 @@
 .shift-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: var(--space-4);
 }
 .shift {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 24px;
+  gap: var(--space-3);
+  padding: var(--pad-card);
   border-radius: var(--r-lg);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
@@ -581,12 +581,14 @@
 .shift-title {
   font-size: 1.14rem;
   color: var(--c-ink);
+  /* A little more room below the heading than between the blocks. */
+  margin-bottom: var(--space-1);
 }
 .shift-side {
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  padding: 13px 16px;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--r-md);
 }
 .shift-side p {
@@ -635,14 +637,15 @@
 @media (min-width: 720px) {
   .shift-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 18px;
-    row-gap: 14px;
+    column-gap: var(--space-4);
+    /* Matches the card's own row gap, so a card in the grid (which inherits
+       this via subgrid) and a standalone card read identically. */
+    row-gap: var(--space-3);
   }
   .shift {
     display: grid;
     grid-row: span 4;
     grid-template-rows: subgrid;
-    gap: 0;
   }
   .shift-connector {
     justify-self: center;
@@ -721,15 +724,15 @@
 
 .rosetta {
   display: grid;
-  gap: 18px;
+  gap: var(--space-4);
 }
 .rosetta-group {
-  padding: 8px 8px 14px;
+  padding: var(--space-2) var(--space-2) var(--space-3);
   border-radius: var(--r-lg);
 }
 .rosetta-group-title {
   font-size: 1.1rem;
-  padding: 14px 16px 10px;
+  padding: var(--space-3) var(--space-4) var(--space-2);
   color: var(--c-warm-ink);
 }
 .rosetta-rows {
@@ -741,8 +744,8 @@
   display: grid;
   grid-template-columns: 170px minmax(0, 1fr) minmax(0, 1fr);
   align-items: start;
-  gap: 16px;
-  padding: 13px 16px;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
   border-radius: var(--r-md);
 }
 .rosetta-row:hover {
@@ -809,19 +812,19 @@
 .gotchas {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 16px;
+  gap: var(--space-4);
 }
 .gotcha {
   display: flex;
   flex-direction: column;
-  padding: 22px;
+  padding: var(--pad-card);
   border-radius: var(--r-lg);
 }
 .gotcha-head {
   display: flex;
   align-items: flex-start;
-  gap: 11px;
-  margin-bottom: 10px;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
 }
 .gotcha-mark {
   display: inline-flex;
@@ -850,12 +853,12 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 16px;
+  gap: var(--space-4);
 }
 .step {
   display: grid;
   grid-template-columns: auto 1fr;
-  gap: 18px;
+  gap: var(--space-4);
   align-items: start;
 }
 .step-num {
@@ -872,14 +875,14 @@
   flex-shrink: 0;
 }
 .step-body {
-  padding-top: 4px;
+  padding-top: var(--space-1);
 }
 .step-body h3 {
   font-size: 1.1rem;
   color: var(--c-ink);
 }
 .step-body p {
-  margin-top: 6px;
+  margin-top: var(--space-2);
   color: var(--c-ink-soft);
 }
 .code-block {
@@ -939,12 +942,12 @@
 .pkg-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 14px;
+  gap: var(--space-4);
 }
 .pkg {
   display: flex;
   flex-direction: column;
-  padding: 18px 20px;
+  padding: var(--pad-card);
   border-radius: var(--r-lg);
 }
 .pkg--link {
@@ -959,7 +962,7 @@
 .pkg-name {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: var(--space-2);
   font-size: 1rem;
   color: var(--c-ink);
 }
@@ -976,13 +979,13 @@
   transform: translate(1px, -1px);
 }
 .pkg p {
-  margin-top: 8px;
+  margin-top: var(--space-2);
   font-size: 0.92rem;
   color: var(--c-ink-soft);
 }
 .pkg .pkg-analog {
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: var(--space-3);
   font-size: 0.85rem;
   color: var(--c-ink-muted);
 }
@@ -998,15 +1001,15 @@
 .resources {
   list-style: none;
   margin: 0;
-  padding: 10px;
+  padding: var(--space-2);
   border-radius: var(--r-lg);
 }
 .resource {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: baseline;
-  gap: 14px;
-  padding: 14px 16px;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
 }
 /* Link plus note share the second column, so a wrapped note lines up under the
    link instead of jumping back under the kind tag. */
@@ -1014,7 +1017,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 4px 12px;
+  gap: var(--space-1) var(--space-3);
   min-width: 0;
 }
 .resource + .resource {

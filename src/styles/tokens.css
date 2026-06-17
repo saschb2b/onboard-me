@@ -67,6 +67,18 @@
   --shadow-lg: 0 30px 70px rgba(74, 56, 110, 0.20);
   --shadow-warm: 0 16px 38px rgba(236, 111, 169, 0.34);
 
+  /* Spacing scale (4px base). Use these for padding, gap, and margin so the
+     whole app shares one rhythm instead of ad-hoc pixel values. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  /* Standard inner padding for a content card. */
+  --pad-card: var(--space-5);
+
   /* Radii */
   --r-sm: 12px;
   --r-md: 18px;
